@@ -1,4 +1,4 @@
-import { ref, computed, type Ref } from 'vue'
+import { ref, computed, readonly, type Ref } from 'vue'
 
 export interface UseAsyncState<T> {
   data: Ref<T | null>

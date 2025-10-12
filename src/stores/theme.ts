@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, readonly } from 'vue'
 import type { ThemeConfig } from '@/types'
 import { useLocalStorage } from '@/composables/useLocalStorage'
 

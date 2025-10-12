@@ -317,8 +317,8 @@ const isEditing = computed(() => !!props.task)
 const getInitialValues = () => ({
   title: props.task?.title || '',
   description: props.task?.description || '',
-  priority: props.task?.priority || '',
-  status: props.task?.status || '',
+  priority: props.task?.priority || TaskPriorityEnum.MEDIUM,
+  status: props.task?.status || TaskStatusEnum.TODO,
   dueDate: props.task?.dueDate || null,
   estimatedHours: props.task?.estimatedHours || null,
   tags: props.task?.tags || [],

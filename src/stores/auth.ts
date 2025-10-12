@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed, readonly } from 'vue'
-import type { User, UserRole, ApiResponse } from '@/types'
+import type { User, ApiResponse } from '@/types'
+import { UserRole } from '@/types'
 import { authApi } from '@/api/auth'
 
 // 登录表单类型

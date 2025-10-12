@@ -4,9 +4,9 @@
     :style="{ width: `${size}px`, height: `${size}px` }"
   >
     <img
-      v-if="user.avatar"
-      :src="user.avatar"
-      :alt="user.username"
+      v-if="avatarUrl"
+      :src="avatarUrl"
+      :alt="displayName"
       class="avatar__image"
       @error="handleImageError"
     />
@@ -21,7 +21,9 @@ import { computed, ref } from 'vue'
 import type { User } from '@/types'
 
 interface Props {
-  user: User
+  user?: User
+  name?: string
+  avatar?: string
   size?: number
 }
 
@@ -31,8 +33,22 @@ const props = withDefaults(defineProps<Props>(), {
 
 const imageError = ref(false)
 
+const displayName = computed(() => {
+  if (props.user) return props.user.username || props.user.email
+  if (props.name) return props.name
+  return 'User'
+})
+
+const avatarUrl = computed(() => {
+  if (imageError.value) return null
+  if (props.user?.avatar) return props.user.avatar
+  if (props.avatar) return props.avatar
+  return null
+})
+
 const initials = computed(() => {
-  const name = props.user.username || props.user.email
+  const name = displayName.value
+  if (!name) return '?'
   return name
     .split(' ')
     .map(word => word.charAt(0).toUpperCase())

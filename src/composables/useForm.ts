@@ -1,4 +1,4 @@
-import { ref, reactive, computed, watch, type Ref } from 'vue'
+import { ref, reactive, computed, watch, readonly, type Ref } from 'vue'
 import type { FormField, ValidationRule } from '@/types'
 
 // 表单验证错误类型
